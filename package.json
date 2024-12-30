@@ -1,0 +1,66 @@
+{
+  "name": "@gitset-dev/cli",
+  "version": "0.1.0",
+  "description": "AI-powered commit message generator - Create meaningful commit messages based on your staged changes",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "gitset": "./src/index.js"
+  },
+  "scripts": {
+    "prepare": "husky install && chmod +x src/index.js",
+    "postinstall": "chmod +x src/index.js",
+    "dev": "npm install && chmod +x src/index.js && npm link",
+    "start": "node src/index.js",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "preversion": "npm run lint && npm test",
+    "version": "npm run format && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "message",
+    "ai",
+    "cli",
+    "gitset",
+    "commit-message",
+    "git-tools"
+  ],
+  "author": {
+    "name": "Gitset Dev Team",
+    "url": "https://github.com/gitset-dev"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitset-dev/gitset-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gitset-dev/gitset-cli/issues"
+  },
+  "homepage": "https://github.com/gitset-dev/gitset-cli#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
