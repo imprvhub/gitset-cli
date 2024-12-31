@@ -4,7 +4,6 @@ import { promisify } from 'util';
 import fetch from 'node-fetch';
 import { program } from 'commander';
 import path from 'path';
-import fs from 'fs/promises';
 
 const execAsync = promisify(exec);
 
@@ -173,14 +172,6 @@ async function generateCommitMessage() {
 
         const repoName = await getRepoInfo();
         log('API', 'Processing diffs with AI...');
-
-        const payload = {
-            repo_name: repoName,
-            file_changes: fileChanges
-        };
-
-        await fs.writeFile('debug-payload.json', JSON.stringify(payload, null, 2));
-        log('Debug', `Payload saved to debug-payload.json (${JSON.stringify(payload).length} bytes)`);
 
         const response = await fetch('https://gitset-commit-messages.vercel.app/generate-commit-message', {
             method: 'POST',
