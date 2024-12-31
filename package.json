@@ -1,6 +1,6 @@
 {
   "name": "@gitset/cli",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Generate semantic commit messages using AI-driven analysis of staged code changes.",
   "main": "src/index.js",
   "type": "module",
