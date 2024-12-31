@@ -24,7 +24,7 @@ jobs:
       - name: Update package name for GitHub Packages
         run: |
           cp package.json package.json.backup
-          npm pkg set name=@gitset-dev/gitset/cli
+          npm pkg set name=@gitset-dev/gitset-cli
       
       - name: Publish to GitHub Packages
         run: |
