@@ -19,14 +19,7 @@ jobs:
         with:
           node-version: '18'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@gitset-dev'
-      
-      - name: Update package name for GitHub Packages
-        run: |
-          # Guardar una copia del package.json original
-          cp package.json package.json.backup
-          # Modificar el nombre del paquete para GitHub Packages
-          npm pkg set name=@gitset-dev/cli
+          scope: '@gitset'
       
       - name: Publish to GitHub Packages
         run: |
@@ -35,6 +28,3 @@ jobs:
           npm publish --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PAT_GITHUB }}
-          
-      - name: Restore original package.json
-        run: mv package.json.backup package.json
