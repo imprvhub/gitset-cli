@@ -22,7 +22,7 @@ const colors = {
 
 function log(step, message, isError = false) {
     const timestamp = new Date().toLocaleTimeString();
-    const prefix = isError ? colors.red + '❌' : colors.customCyan + '⬤';
+    const prefix = isError ? colors.red + '❌' : colors.customCyan + '●';
     const stepColor = isError ? colors.red : colors.cyan;
     console.log(`${prefix} ${colors.reset}[${timestamp}] ${stepColor}${step}${colors.reset}: ${message}`);
 }
@@ -221,7 +221,7 @@ async function generateCommitMessage() {
 program
     .name('gitset')
     .description('Generate semantic commit messages using AI-driven analysis of staged code changes.')
-    .version('0.2.2')
+    .version('0.2.3')
     .action(generateCommitMessage);
 
 program.parse();
