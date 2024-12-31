@@ -1,20 +1,18 @@
 {
   "name": "@gitset/cli",
-  "version": "0.1.7",
+  "version": "0.1.6",
   "description": "Generate semantic commit messages using AI-driven analysis of staged code changes.",
   "main": "src/index.js",
   "type": "module",
   "bin": {
-    "gitset": "src/index.js"
+    "gitset": "./src/index.js"
   },
   "scripts": {
     "prepare": "chmod +x src/index.js",
     "postinstall": "chmod +x src/index.js",
     "dev": "npm install && chmod +x src/index.js && npm link",
     "start": "node src/index.js",
-    "test": "echo \"No test specified\"",
-    "publish:npm": "npm publish --access public --registry https://registry.npmjs.org/",
-    "publish:github": "npm publish --access public --registry https://npm.pkg.github.com"
+    "test": "echo \"No test specified\""
   },
   "engines": {
     "node": ">=18.0.0"
@@ -52,7 +50,6 @@
   "homepage": "https://github.com/gitset-dev/gitset-cli#readme",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "@gitset:registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/"
   }
 }
