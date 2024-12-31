@@ -1,1 +1,3 @@
 # gitset-cli
+
+EXAMPLE
