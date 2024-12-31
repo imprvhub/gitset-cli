@@ -22,7 +22,7 @@ const colors = {
 
 function log(step, message, isError = false) {
     const timestamp = new Date().toLocaleTimeString();
-    const prefix = isError ? colors.red + '❌' : colors.green + '✨';
+    const prefix = isError ? colors.red + '❌' : colors.customCyan + '⬤';
     const stepColor = isError ? colors.red : colors.cyan;
     console.log(`${prefix} ${colors.reset}[${timestamp}] ${stepColor}${step}${colors.reset}: ${message}`);
 }
@@ -135,7 +135,7 @@ async function generateCommitMessage() {
 
         const files = await getStagedFiles();
         if (files.length === 0) {
-            log('Git', 'No files staged. Use git add first.', true);
+            log('Git', 'No files staged. Use `git add <file>` first.', true);
             return;
         }
 
@@ -172,7 +172,7 @@ async function generateCommitMessage() {
 
         const repoName = await getRepoInfo();
         log('API', 'Processing diffs with AI...');
-
+        log('NOTE', `The following commit message is a general reference and may not be fully accurate. If it doesn't meet your expectations, try again or suggest improvements here: https://gitset.dev/contact`)
         const response = await fetch('https://gitset-commit-messages.vercel.app/generate-commit-message', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -205,7 +205,7 @@ async function generateCommitMessage() {
         function formatCommitMessage(message) {
             const [title, ...descriptionParts] = message.split('\n');
             const description = descriptionParts.join('\n');
-            return `${colors.bright}${colors.customCyan}${title}${colors.reset}\n${description ? `\n${colors.darkCyan}${description}${colors.reset}` : ''}`;
+            return `${colors.bright}${colors.customCyan}${title}${colors.reset}${description ? `\n${colors.darkCyan}${description}${colors.reset}` : ''}`;
         }
 
         console.log(`${colors.bright}📝 Suggested message:${colors.reset}`);
@@ -221,7 +221,7 @@ async function generateCommitMessage() {
 program
     .name('gitset')
     .description('Generate semantic commit messages using AI-driven analysis of staged code changes.')
-    .version('0.2.1')
+    .version('0.2.2')
     .action(generateCommitMessage);
 
 program.parse();
