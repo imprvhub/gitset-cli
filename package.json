@@ -13,10 +13,6 @@
     "dev": "npm install && chmod +x src/index.js && npm link",
     "start": "node src/index.js",
     "test": "jest",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "preversion": "npm run lint && npm test",
     "version": "npm run format && git add -A",
     "postversion": "git push && git push --tags"
   },
