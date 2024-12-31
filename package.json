@@ -28,10 +28,11 @@
     "git-tools"
   ],
   "author": {
-    "name": "Gitset Dev Team",
-    "url": "https://github.com/gitset-dev"
+    "name": "Gitset.dev",
+    "email": "support@gitset.dev",
+    "url": "https://gitset.dev"
   },
-  "license": "MIT",
+  "license": "MPL-2.0",
   "dependencies": {
     "commander": "^11.1.0",
     "node-fetch": "^3.3.2"
