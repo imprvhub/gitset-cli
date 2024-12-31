@@ -230,7 +230,7 @@ async function generateCommitMessage() {
 program
     .name('gitset')
     .description('Generate semantic commit messages using AI-driven analysis of staged code changes.')
-    .version('0.1.6')
+    .version('0.1.8')
     .action(generateCommitMessage);
 
 program.parse();
