@@ -220,8 +220,12 @@ async function generateCommitMessage() {
 
 program
     .name('gitset')
+    .description('Smart AI Docs & Versioning for GitHub Repositories.')
+    .version('1.0.0');
+
+program
+    .command('suggest')
     .description('Generate semantic commit messages using AI-driven analysis of staged code changes.')
-    .version('0.2.3')
     .action(generateCommitMessage);
 
 program.parse();
