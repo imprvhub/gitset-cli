@@ -240,7 +240,7 @@ async function generateCommitMessage(options) {
 program
     .name('gitset')
     .description('Smart AI Docs & Versioning for GitHub Repositories.')
-    .version('1.0.0');
+    .version('1.1.0');
 
 program
     .command('suggest')
