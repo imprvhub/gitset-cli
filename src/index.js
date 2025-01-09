@@ -27,6 +27,19 @@ function log(step, message, isError = false) {
     console.log(`${prefix} ${colors.reset}[${timestamp}] ${stepColor}${step}${colors.reset}: ${message}`);
 }
 
+async function getLastCommits(count = 20) {
+    try {
+        log('History', `Fetching last ${count} commits...`);
+        const { stdout } = await execAsync(`git log -${count} --pretty=format:"%s"`);
+        const commits = stdout.split('\n');
+        log('History', `✓ Retrieved ${commits.length} commits`);
+        return commits;
+    } catch (error) {
+        log('History', `Error fetching commit history: ${error.message}`, true);
+        return [];
+    }
+}
+
 async function getGitDiff(file) {
     try {
         log('Diff', `Getting differences for ${file}...`);
@@ -80,7 +93,6 @@ async function getRepoInfo() {
     }
 }
 
-// Files that should typically be ignored
 const IGNORED_FILES = [
     'package-lock.json',
     'yarn.lock',
@@ -129,9 +141,10 @@ async function getStagedFiles() {
     }
 }
 
-async function generateCommitMessage() {
+async function generateCommitMessage(options) {
     try {
         log('Start', 'Starting commit message generation process...');
+        const { mode = 'semantic', commitCount = 20 } = options;
 
         const files = await getStagedFiles();
         if (files.length === 0) {
@@ -171,14 +184,20 @@ async function generateCommitMessage() {
         )).filter(change => change !== null);
 
         const repoName = await getRepoInfo();
-        log('API', 'Processing diffs with AI...');
+
+        const commitHistory = mode === 'custom' ? await getLastCommits(parseInt(commitCount)) : [];
+        
+        log('API', `Processing diffs with AI using ${mode} mode...`);
         log('NOTE', `The following commit message is a general reference and may not be fully accurate. If it doesn't meet your expectations, try again or suggest improvements here: https://gitset.dev/contact`)
+        
         const response = await fetch('https://gitset-commit-messages.vercel.app/generate-commit-message', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 repo_name: repoName,
-                file_changes: fileChanges
+                file_changes: fileChanges,
+                mode: mode,
+                commit_history: commitHistory
             })
         });
 
@@ -208,7 +227,7 @@ async function generateCommitMessage() {
             return `${colors.bright}${colors.customCyan}${title}${colors.reset}${description ? `\n${colors.darkCyan}${description}${colors.reset}` : ''}`;
         }
 
-        console.log(`${colors.bright}📝 Suggested message:${colors.reset}`);
+        console.log(`${colors.bright}📝 Suggested message (${mode} mode):${colors.reset}`);
         console.log(`${colors.yellow}------------------${colors.reset}`);
         console.log(formatCommitMessage(commit_message));
 
@@ -225,7 +244,9 @@ program
 
 program
     .command('suggest')
-    .description('Generate semantic commit messages using AI-driven analysis of staged code changes.')
+    .description('Generate commit messages using AI-driven analysis of staged code changes.')
+    .option('-m, --mode <mode>', 'Commit message mode (semantic or custom)', 'semantic')
+    .option('-c, --commit-count <count>', 'Number of previous commits to analyze for custom mode', '20')
     .action(generateCommitMessage);
 
 program.parse();
