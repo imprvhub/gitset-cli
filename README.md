@@ -1,7 +1,7 @@
 # @gitset-dev/cli
 
 <div align="center">
-  <img src="https://github.com/imprvhub/gitset/blob/main/public/favicon-192.png" alt="Gitset" />
+  <img src="https://github.com/imprvhub/gitset/blob/main/public/favicon-120-precomposed.png" alt="Gitset" />
   <br>
   <a href="https://badge.fury.io/js/@gitset-dev%2Fcli">
     <img src="https://img.shields.io/npm/v/@gitset-dev/cli?color=%237BFEF5" alt="npm version" />
