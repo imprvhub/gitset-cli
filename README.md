@@ -1,158 +1,157 @@
-# @gitset-dev/cli
-
 <div align="center">
-  <img src="https://github.com/imprvhub/gitset/blob/main/public/favicon-120-precomposed.png" alt="Gitset" />
-  <br>
-  <a href="https://badge.fury.io/js/@gitset-dev%2Fcli">
-    <img src="https://img.shields.io/npm/v/@gitset-dev/cli?color=%237BFEF5" alt="npm version" />
-  </a>
-  <a href="https://opensource.org/licenses/MPL-2.0">
-    <img src="https://img.shields.io/badge/License-MPL_2.0-%237BFEF5" alt="License: MPL 2.0" />
-  </a>
-  <br>
-  <br>
-  <p><em>Generate commit messages using AI-driven analysis - now with style adaptation!</em></p>
+    <img src="https://github.com/imprvhub/gitset/blob/main/public/favicon-192.png" alt="GitSet CLI" />
+    <br>
+    <a href="https://badge.fury.io/js/@gitset-dev%2Fcli">
+        <img src="https://img.shields.io/npm/v/@gitset-dev/cli?color=%237BFEF5" alt="npm version" />
+    </a>
+    <a href="https://opensource.org/licenses/MPL-2.0">
+        <img src="https://img.shields.io/badge/License-MPL_2.0-%237BFEF5" alt="License: MPL 2.0" />
+    </a>
+    <br>
+    <br>
+    <h3>
+        GitSet CLI - Command Line Interface Commit Message Generation with AI-Driven Analysis
+    </h3>
 </div>
 
-## Features
+## Overview
 
-- 🤖 AI-powered commit message generation
-- 📝 Semantic commit message formatting
-- 🎨 Personal style adaptation (New!)
-- 🔍 Smart analysis of staged changes
-- 🚀 Fast and lightweight
-- 💻 Cross-platform support
+GitSet CLI is an integral component of the GitSet.dev ecosystem, designed to enhance Git workflow automation through AI-driven commit message generation. By leveraging Google's Gemini Pro AI technology, it provides intelligent analysis of staged changes to generate contextually appropriate commit messages, supporting both semantic and personalized formatting styles.
 
-## Installation
+## Key Capabilities
+
+The GitSet CLI enhances repository management through:
+
+- **AI-Powered Analysis**: Utilizes advanced AI processing to analyze staged changes and generate contextually appropriate commit messages
+- **Semantic Versioning Support**: Implements conventional commit standards for maintaining structured version control
+- **Style Adaptation**: Analyzes existing commit patterns to match personal or team commit message conventions
+- **Efficient Processing**: Provides rapid analysis and suggestion generation while maintaining minimal resource utilization
+- **Cross-Platform Architecture**: Ensures consistent operation across various operating systems and environments
+
+## System Requirements
+
+- Node.js Runtime Environment (Version 18.0.0 or higher)
+- Git (Installed and configured)
+- Active internet connection for AI processing
+
+## Installation Process
+
+Install the GitSet CLI globally via npm:
 
 ```bash
 npm install -g @gitset-dev/cli
 ```
 
-## Usage
+## Implementation Guide
 
-1. Stage your changes:
+### Basic Usage
+
+1. Stage your modifications:
 ```bash
 git add .
 ```
 
-2. Generate a commit message:
+2. Generate commit message suggestions:
 ```bash
-# Semantic mode (default)
+# Semantic versioning format (default)
 gitset suggest
 
-# Custom style mode
+# Custom formatting style
 gitset suggest --mode custom
 ```
 
-3. Review and use the generated message:
+3. Implement the generated message:
 ```bash
-git commit -m "your generated message"
+git commit -m "generated_message"
 ```
 
-## Examples
+### Operational Modes
 
+#### Semantic Mode (Default Implementation)
+Implements conventional commit standards to generate structured, semantic commit messages. This mode is optimized for maintaining consistent and professional Git history in enterprise environments.
+
+Example output:
 ```bash
-# Semantic mode (default)
 $ gitset suggest
-✨ Suggested message:
-------------------
-feat: Add user authentication feature with JWT support
+✨ Generated Suggestion:
+------------------------
+feat: Implement JWT authentication system
 
-- Implement JWT token generation and validation
-- Add login and signup endpoints
-- Create middleware for route protection
-
-# Custom style mode
-$ gitset suggest --mode custom
-✨ Suggested message:
-------------------
-[Auth] Added JWT user authentication 🔐
-
-Implemented token system, added login/signup routes,
-and set up protection middleware! Ready for testing.
+- Add token generation and validation mechanisms
+- Integrate login and registration endpoints
+- Configure route protection middleware
 ```
 
-## Requirements
+#### Custom Mode
+Analyzes existing commit patterns to generate messages that align with established conventions:
 
-- Node.js >= 18.0.0
-- Git installed and configured
-
-## Commit Message Modes
-
-### Semantic Mode (Default)
-The default mode follows conventional commit standards to generate structured, semantic commit messages. Perfect for maintaining a clean and standard Git history in professional projects.
-
-### Custom Mode
-Custom mode analyzes your previous commit messages and adapts to your personal writing style:
-- Studies your last commits (default: 20) to understand your patterns
-- Learns from your formatting, tone, and structure
-- Maintains your sequential patterns if you use them
-- Adapts emoji usage based on your style
-- Preserves your capitalization and punctuation preferences
-- Keeps descriptive content while matching your style
+- Evaluates recent commit history (default: 20 commits) for pattern recognition
+- Adapts to existing formatting conventions and structural patterns
+- Maintains sequential naming conventions if detected
+- Preserves emoji usage patterns and placement
+- Replicates capitalization and punctuation styles
+- Balances descriptive content with stylistic consistency
 
 Example of style adaptation:
 ```bash
-# If your commits look like this:
-FEATURE_123: added login page 🚀
-FEATURE_124: updated navbar design ✨
-FEATURE_125: fixed routing issues 🔧
+# Given existing commit pattern:
+FEATURE_123: Enhanced login interface 🚀
+FEATURE_124: Updated navigation system ✨
+FEATURE_125: Resolved routing conflicts 🔧
 
-# Custom mode will generate similar style:
-FEATURE_126: implemented user settings 🎯
+# Generated suggestion maintains consistency:
+FEATURE_126: Implemented user preferences 🎯
 ```
 
-## Configuration
+## Configuration Reference
 
-No additional configuration needed. The CLI automatically detects your Git repository and staged changes.
+### Command Structure
 
-## API Reference
+Primary command:
+- `gitset suggest` - Initiates commit message generation based on staged changes
 
-### Commands
+### Available Parameters
 
-- `gitset suggest` - Generate a commit message based on staged changes
+- `--mode <mode>` - Specifies generation mode ('semantic' or 'custom')
+- `--commit-count <count>` - Defines number of commits to analyze (default: 20)
+- `--version` - Displays CLI version information
+- `--help` - Provides command usage information
 
-### Options
+## Development Contribution
 
-- `--mode <mode>` - Choose between 'semantic' (default) or 'custom' style
-- `--commit-count <count>` - Number of previous commits to analyze (default: 20)
-- `--version` - Show CLI version
-- `--help` - Show help information
+We welcome contributions to enhance the GitSet CLI. Please follow these steps:
 
-## Contributing
-
-We love your input! We want to make contributing to @gitset-dev/cli as easy and transparent as possible.
-
-1. Fork the repo
-2. Create your feature branch:
+1. Fork the repository
+2. Create a feature branch:
    ```bash
-   git checkout -b feature/amazing-feature
+   git checkout -b feature/enhancement-description
    ```
-3. Commit your changes:
+3. Implement modifications:
    ```bash
-   git commit -m 'feat: Add some amazing feature'
+   git commit -m 'feat: Add enhancement description'
    ```
-4. Push to the branch:
+4. Push changes:
    ```bash
-   git push origin feature/amazing-feature
+   git push origin feature/enhancement-description
    ```
-5. Open a Pull Request
+5. Submit a Pull Request
 
-## License
+## License Information
 
-This project is licensed under the Mozilla Public License 2.0 - see the [LICENSE.md](LICENSE.md) file for details.
+This project operates under the Mozilla Public License 2.0 - refer to [LICENSE.md](LICENSE.md) for detailed terms.
 
-## Support
+## Support Channels
 
-- Email: support@gitset.dev
+- Technical Support: support@gitset.dev
 - Contact Form: https://gitset.dev/contact
-- Issues: https://github.com/gitset-dev/gitset-cli/issues
+- Issue Tracking: https://github.com/gitset-dev/gitset-cli/issues
 
 ## Acknowledgments
 
-- Thanks to all our contributors
-- Built with [Commander.js](https://github.com/tj/commander.js)
-- Powered by Google's Gemini Pro
+- Contributors who have helped improve this tool
+- Commander.js for CLI framework support
+- Google's Gemini Pro for AI capabilities
 
 ---
+
+Part of the [GitSet.dev](https://gitset.dev) ecosystem - Smart AI Documentation & Version Control for GitHub Repositories.
