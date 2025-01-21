@@ -10,7 +10,7 @@
     <br>
     <br>
     <h3>
-        GitSet CLI - Command Line Interface Commit Message Generation with AI-Driven Analysis
+        GitSet CLI - AI-Driven Commit Message Generation
     </h3>
 </div>
 
@@ -27,6 +27,8 @@ The GitSet CLI enhances repository management through:
 - **Style Adaptation**: Analyzes existing commit patterns to match personal or team commit message conventions
 - **Efficient Processing**: Provides rapid analysis and suggestion generation while maintaining minimal resource utilization
 - **Cross-Platform Architecture**: Ensures consistent operation across various operating systems and environments
+- **License Management**: Flexible licensing system with both free and pro tiers for different usage needs
+- **Usage Tracking**: Built-in monitoring of API usage and license status
 
 ## System Requirements
 
@@ -63,6 +65,20 @@ gitset suggest --mode custom
 3. Implement the generated message:
 ```bash
 git commit -m "generated_message"
+```
+
+### License Management
+
+Activate your GitSet license:
+```bash
+# Activate with license key
+gitset activate <license-key>
+
+# Check license status and usage
+gitset status
+
+# Remove current license
+gitset deactivate
 ```
 
 ### Operational Modes
@@ -107,15 +123,32 @@ FEATURE_126: Implemented user preferences 🎯
 
 ### Command Structure
 
-Primary command:
+Available commands:
 - `gitset suggest` - Initiates commit message generation based on staged changes
+- `gitset activate` - Activates GitSet with a license key
+- `gitset status` - Checks current license status and usage
+- `gitset deactivate` - Removes current license configuration
+- `gitset help` - Displays detailed usage information
 
 ### Available Parameters
 
+For suggest command:
 - `--mode <mode>` - Specifies generation mode ('semantic' or 'custom')
 - `--commit-count <count>` - Defines number of commits to analyze (default: 20)
 - `--version` - Displays CLI version information
 - `--help` - Provides command usage information
+
+## Plans and Pricing
+
+- **Basic (Free)**
+  - 10 requests per month
+  - Basic commit message generation
+  - Semantic and custom modes support
+
+- **Pro**
+  - Unlimited requests
+  - Advanced features and priority support
+  - Visit https://gitset.dev/pricing for details
 
 ## Development Contribution
 
@@ -145,6 +178,7 @@ This project operates under the Mozilla Public License 2.0 - refer to [LICENSE.m
 - Technical Support: support@gitset.dev
 - Contact Form: https://gitset.dev/contact
 - Issue Tracking: https://github.com/gitset-dev/gitset-cli/issues
+- Account Management: https://gitset.dev/account
 
 ## Acknowledgments
 
