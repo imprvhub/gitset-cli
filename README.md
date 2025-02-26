@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/imprvhub/gitset/blob/main/public/favicon-192.png" alt="GitSet CLI" />
+    <img src="https://github.com/imprvhub/gitset/blob/main/public/favicon-114-precomposed.png" alt="GitSet CLI" />
     <br>
     <a href="https://badge.fury.io/js/@gitset-dev%2Fcli">
         <img src="https://img.shields.io/npm/v/@gitset-dev/cli?color=%237BFEF5" alt="npm version" />
